@@ -242,9 +242,8 @@ graph TD
   Driver((Delivery Driver)) --> DS
   HQ((Head Office)) --> PS
   HQ --> MS
-```
 
   MAS --> Maps[External Map Services]
   PYS --> Payments[Payment Gateways]
   CNS --> Notif[SMS/Email Providers]
-
+```

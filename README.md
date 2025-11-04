@@ -190,3 +190,60 @@
 
 ## Базовая архитектура
 
+
+
+graph TD
+  subgraph "SandwichOrder Platform"
+    FE[Web & Mobile Frontend]
+    AP[Franchise Admin Portal]
+    GW[API Gateway]
+    AS[Auth Service]
+    OS[Order Service]
+    MS[Menu & Franchise Service]
+    PS[Promotion Service]
+    PYS[Payment Service]
+    DS[Delivery Service]
+    MAS[Map Adapter Service]
+    CNS[Customer Notification Service]
+
+    ODB[(Orders DB)]
+    UDB[(Users DB)]
+    PRDB[(Promotions DB)]
+    MDB[(Menu DB)]
+    PAYDB[(Payments DB)]
+
+    FE <--> GW
+    AP <--> GW
+    GW <--> AS
+    GW <--> OS
+    GW <--> MS
+    GW <--> PS
+    GW <--> PYS
+    GW <--> DS
+    GW <--> CNS
+
+    OS --> ODB
+    AS --> UDB
+    PS --> PRDB
+    MS --> MDB
+    PYS --> PAYDB
+
+    OS <--> MS
+    OS <--> PS
+    OS <--> PYS
+    DS <--> MAS
+    CNS <--> OS
+    AP <--> MS
+    AP <--> PS
+  end
+
+  Customer((Customer)) --> FE
+  FranchiseOwner((Franchise Owner)) --> AP
+  Driver((Delivery Driver)) --> DS
+  HQ((Head Office)) --> PS
+  HQ --> MS
+
+  MAS --> Maps[External Map Services]
+  PYS --> Payments[Payment Gateways]
+  CNS --> Notif[SMS/Email Providers]
+

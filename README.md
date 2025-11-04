@@ -191,7 +191,7 @@
 ## Базовая архитектура
 
 
-
+```mermaid
 graph TD
   subgraph "SandwichOrder Platform"
     FE[Web & Mobile Frontend]
@@ -242,6 +242,7 @@ graph TD
   Driver((Delivery Driver)) --> DS
   HQ((Head Office)) --> PS
   HQ --> MS
+```
 
   MAS --> Maps[External Map Services]
   PYS --> Payments[Payment Gateways]
